@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Siva Sakthi Portfolio</title>
+
+<!-- Font Awesome for icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+:root {
+    --bg: #f5f5f7;        /* Light gray background */
+    --text: #1a1a1a;      /* Dark text */
+    --card: #ffffff;       /* White card */
+    --primary: #304060;    /* Professional navy blue */
+    --nav: #1f1f1f;        /* Dark nav */
+    --shadow: rgba(0,0,0,0.1);
+}
+
+.dark-mode {
+    --bg: #0d1117;
+    --text: #e6edf3;
+    --card: #161b22;
+    --primary: #238636;  /* subtle green for dark mode */
+    --nav: #010409;
+    --shadow: rgba(255,255,255,0.1);
+}
+
+/* Body */
+body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    transition: 0.4s;
+}
+
+/* Header */
+header {
+    background: var(--primary);
+    color: #fff;
+    text-align: center;
+    padding: 40px 20px;
+    transition: 0.4s;
+}
+
+.header-content {
+    display: flex;
+    align-items: center;
+    max-width: 1000px;
+    margin: 0 auto;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+header img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 4px solid white;
+    object-fit: cover;
+}
+
+.header-text h1 {
+    margin: 0;
+    font-size: 28px;
+}
+
+.header-text p {
+    margin: 5px 0 0;
+    font-size: 18px;
+}
+
+/* Navigation */
+nav {
+    background: var(--nav);
+    text-align: center;
+    padding: 10px;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+nav a {
+    color: #fff;
+    padding: 14px 20px;
+    display: inline-block;
+    cursor: pointer;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+nav a:hover {
+    background: #304060; /* dark navy hover */
+    border-radius: 5px;
+}
+
+/* Buttons */
+.btn, .contact-btn, .toggle-btn {
+    background: var(--primary);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.btn:hover, .contact-btn:hover, .toggle-btn:hover {
+    background: #304060;
+    transform: translateY(-2px);
+}
+
+/* Sections and Cards */
+section {
+    display: none;
+    max-width: 1000px;
+    margin: 20px auto;
+    background: var(--card);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px var(--shadow);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: 0.4s;
+}
+
+section.active {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.about-container, .cert-container, .project-container, .contact-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-around;
+}
+
+.about-card, .cert-card, .project-card, .contact-card {
+    background: var(--card);
+    padding: 20px;
+    border-radius: 12px;
+    border-left: 5px solid var(--primary);
+    width: 300px;
+    box-shadow: 0 6px 12px var(--shadow);
+    transition: 0.4s;
+}
+
+.about-card:hover, .cert-card:hover, .project-card:hover, .contact-card:hover {
+    transform: translateY(-10px);
+}
+
+.project-card img, .cert-card img {
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+/* Contact Section */
+.contact-card {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.contact-card a {
+    color: var(--primary);
+    text-decoration: none;
+}
+
+.contact-card a:hover {
+    text-decoration: underline;
+}
+
+.contact-btn {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--primary);
+    color: white;
+    padding: 12px 18px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    justify-content: center;
+    transition: 0.3s;
+}
+
+.contact-btn:hover {
+    background: #304060;
+    transform: translateY(-3px);
+}
+
+.contact-btn i {
+    font-size: 18px;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    background: var(--nav);
+    color: white;
+    padding: 20px;
+    margin-top: 30px;
+}
+
+/* Dark mode button */
+.toggle-btn {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    padding: 12px 18px;
+    border-radius: 30px;
+    box-shadow: 0 4px 12px var(--shadow);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .header-content {
+        flex-direction: column;
+        text-align: center;
+    }
+    header img {
+        width: 120px;
+        height: 120px;
+    }
+    nav a {
+        display: block;
+        padding: 12px 0;
+    }
+    .about-card, .cert-card, .project-card, .contact-card {
+        width: 90%;
+    }
+}
+
+@media (max-width: 480px) {
+    header h1 { font-size: 20px; }
+    header p { font-size: 14px; }
+    .btn, .contact-btn { font-size: 14px; padding: 8px 12px; }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="header-content">
+    <img src="C:\Users\SHIVA\Downloads\Siva.jpg" alt="Profile Image" />
+    <div class="header-text">
+    <h1>SIVASAKTHI V</h1>
+    <p style="font-size: larger;">Software Engineer</p>
+    </div>
+</div>
+</header>
+
+<nav>
+    <a onclick="showSection('home')">🏠 Home</a>
+    <a onclick="showSection('about')">👤 About</a>
+    <a onclick="showSection('projects')">💼 Projects</a>
+    <a onclick="showSection('certifications')">📜 Certifications</a>
+    <a onclick="showSection('resume')">📄 Resume</a>
+    <a onclick="showSection('contact')">☎ Contact</a>
+</nav>
+
+<button class="toggle-btn" onclick="toggleDark()">🌙 Dark Mode</button>
+
+<section id="home" class="active">
+    <h2>Welcome 👋</h2>
+    <p>Explore my skills, projects, experience, and certifications.</p>
+</section>
+
+<section id="about">
+    <h2>👤 About Me</h2>
+    <div class="about-container">
+        <div class="about-card">
+            <h3>👨‍💻 About</h3>
+            <p>I am a passionate full stack developer focused on building real-world applications using Java, MySQL, HTML, CSS, and JavaScript.</p>
+        </div>
+        <div class="about-card">
+            <h3>🎓 Education</h3>
+            <ul>
+                <li>B.Tech – DSEC (A), CGPA: 8</li>
+                <li>HSC – 89%</li>
+                <li>SSLC – 92%</li>
+            </ul>
+        </div>
+        <div class="about-card">
+            <h3>🛠 Skills</h3>
+            <ul>
+                <li>Java</li>
+                <li>HTML</li>
+                <li>CSS</li>
+                <li>JavaScript</li>
+                <li>MySQL</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<section id="projects">
+    <h2>💼 Projects</h2>
+    <div class="project-container">
+        <div class="project-card">
+            <h3>AI Women Safety Companion</h3>
+            <p>AI-powered safety system with SOS alerts, live tracking, and emergency communication.</p>
+            <a href="C:\Users\SHIVA\Downloads\MINI PROJECT REPORT EDITED  5.pdf" target="_blank" class="btn"><i class="fas fa-file-pdf"></i> Open Project Report</a>
+        </div>
+    </div>
+</section>
+
+<section id="certifications">
+    <h2>📜 Certifications & Internships</h2>
+    <div class="cert-container">
+        <div class="cert-card">
+            <h3>Web Development Intern</h3>
+            <p><strong>CodeBind Technologies</strong></p>
+            <p>July 2024 – Sep 2024</p>
+            <button class="btn" onclick="toggleCert('cert1')"><i class="fas fa-eye"></i> View Certificate</button>
+            <img id="cert1" src="C:\Users\SHIVA\OneDrive\Pictures\Saved Pictures\webdevelopment.jpg" alt="Web Dev Certificate" style="width:100%; border-radius:10px; display:none;">
+        </div>
+        <div class="cert-card">
+            <h3>Full Stack Intern</h3>
+            <p><strong>Edu Tantr</strong></p>
+            <p>July 2025 – Aug 2025</p>
+            <button class="btn" onclick="toggleCert('cert2')"><i class="fas fa-eye"></i> View Certificate</button>
+            <img id="cert2" src="C:\Users\SHIVA\OneDrive\Pictures\Saved Pictures\fullstack development.jpg" alt="Full Stack Certificate" style="width:100%; border-radius:10px; display:none;">
+        </div>
+        <div class="cert-card">
+            <h3>Artificial Intelligence Workshop</h3>
+            <p><strong>CodeBind Technologies</strong></p>
+            <button class="btn" onclick="toggleCert('cert3')"><i class="fas fa-eye"></i> View Certificate</button>
+            <img id="cert3" src="C:\Users\SHIVA\OneDrive\Pictures\Saved Pictures\workshops.jpg" alt="AI Workshop" style="width:100%; border-radius:10px; display:none;">
+        </div>
+    </div>
+</section>
+
+<section id="resume">
+    <h2>📄 My Resume</h2>
+    <p>Click the button below to view or download my resume:</p>
+    <a href="C:\Users\SHIVA\Downloads\RESUME.pdf" target="_blank" class="btn">
+        <i class="fas fa-file-lines"></i> Open Resume
+    </a>
+</section>
+
+<section id="contact">
+    <h2>☎ Contact Me</h2>
+    <div class="contact-container">
+        <div class="contact-card">
+            <p><i class="fa-solid fa-envelope"></i> <b>sakthisiva9802@gmail.com</b></p>
+            <p><i class="fa-solid fa-phone"></i> <b>9943815853</b></p>
+            <p><i class="fa-brands fa-linkedin"></i>
+                <a href="https://www.linkedin.com/in/siva-sakthi-a707a2365/" target="_blank">Open Profile</a>
+            </p>
+            <p><i class="fa-brands fa-github"></i>
+                <a href="https://github.com/sivasakthi033/Java" target="_blank">Visit GitHub</a>
+            </p>
+            <p><i class="fa-solid fa-location-dot"></i> Villupuram, Tamil Nadu</p>
+        </div>
+    </div>
+</section>
+
+<footer>
+    © 2025 Siva Sakthi V | All Rights Reserved
+</footer>
+
+<script>
+function showSection(id) {
+    document.querySelectorAll("section").forEach(sec => sec.classList.remove("active"));
+    document.getElementById(id).classList.add("active");
+}
+
+function toggleDark() {
+    document.body.classList.toggle("dark-mode");
+}
+
+function toggleCert(id) {
+    const certImg = document.getElementById(id);
+    if(certImg.style.display === "none" || certImg.style.display === "") {
+        certImg.style.display = "block";
+        certImg.scrollIntoView({behavior: "smooth"});
+    } else {
+        certImg.style.display = "none";
+    }
+}
+</script>
+
+</body>
+</html>
